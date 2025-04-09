@@ -5,6 +5,38 @@
 # 
 # New notebook
 
+#                                     UNIVERSIDAD TECNOLÓGICA DE PANAMÁ 
+#         VICERRECTORÍA DE INVESTIGACIÓN, POSTGRADO Y EXTENSIÓN FACULTAD DE INGENIERÍA DE SISTEMAS COMPUTACIONALES
+# 
+#                                     MAESTRÍA EN ANALÍTICA DE DATOS
+#                                         MODELOS PREDICTIVOS
+# 
+#                                             PROYECTO FINAL
+#                                 Exploración de Modelos Predictivos para Ventas en AdventureWorks
+# 
+#                                         ELABORADO POR:
+#                                     CARRERA TELLO, IGNACIO	8-905-1860
+# 
+#                                         PROFESOR:
+#                                     JUAN MARCOS CASTILLO. PhD
+# 
+#                                             GRUPO:
+#                                             1AN-215
+# 
+# 
+
+# ****¿Qué le motivó a nivel personal a desarrollar el estudio predictivo?**
+# 
+# Siempre me ha interesado cómo los datos pueden anticipar comportamientos futuros. 
+# 
+# **¿Cómo fue su experiencia buscando y seleccionando la data?**
+# 
+# La experiencia fue enriquecedora. Aunque inicialmente hubo incertidumbre sobre qué base usar
+# , la elección de AdventureWorks fue acertada por su estructura robusta y cercana a un entorno real. 
+# Explorar sus tablas me ayudó a comprender mejor la lógica de una operación comercial completa.**
+# 
+# 
+
 # In[1]:
 
 
@@ -26,7 +58,7 @@ colors = ["#b1e7cd","#854442","#000000","#fff4e6","#3c2f2f",
          "#be9b7b ","#512E5F","#45B39D","#AAB7B8 ","#20B2AA",
          "#FF69B4","#00CED1","#FF7F50","#7FFF00","#DA70D6"]
 
-csv_path = f"{notebookutils.nbResPath}/builtin/Superstore.csv"
+csv_path = f"{notebookutils.nbResPath}/builtin/SalesAdventureWorks.csv"
 
 # Probar con otro encoding
 df = pd.read_csv(csv_path, delimiter=',', encoding='latin1')
@@ -323,6 +355,13 @@ fig.update_layout(
 iplot(fig)
 
 
+# **¿Qué lecciones aprendió al hacer el análisis descriptivo?**
+# 
+# Aprendí que antes de aplicar cualquier modelo predictivo, es crucial entender a fondo los datos. 
+# El análisis descriptivo reveló patrones importantes, como la estacionalidad de las ventas y la relación no lineal entre descuentos y rentabilidad, 
+# lo cual influyó directamente en la elección del modelo.
+# 
+
 # In[24]:
 
 
@@ -342,6 +381,12 @@ plt.grid(True)
 plt.legend()
 plt.show()
 
+
+# **¿Qué pasos realizó para hacer el análisis de los datos tanto descriptivo como predictivo?**
+# Primero realicé una limpieza de datos, validando fechas, eliminando duplicados y transformando columnas relevantes. 
+# Luego analicé métricas de ventas, ganancias y estacionalidad. Finalmente, apliqué modelos de series temporales (SES, Holt y Holt-Winters) 
+# y comparé sus métricas de error para elegir el más eficiente.
+# 
 
 # In[25]:
 
@@ -455,6 +500,12 @@ plt.show()
 # 
 # - Es probable que haya estacionalidad anual (ej: meses con más ventas).
 
+# **¿Qué descubrió de la investigación?**
+# Descubrí que los modelos con estacionalidad, como Holt-Winters, capturan mejor la dinámica de las ventas. 
+# También confirmé que los productos más vendidos no son necesariamente los más rentables, y que pequeños descuentos 
+# bien dirigidos generan mejores márgenes que grandes promociones.
+# 
+
 # In[29]:
 
 
@@ -537,3 +588,11 @@ resultados = pd.DataFrame({
 resultados[['MAD', 'MAPE', 'Desv_Est']] = resultados[['MAD', 'MAPE', 'Desv_Est']].round(2)
 print(resultados)
 
+
+# **Si fuese a hacer este estudio de nuevo, ¿qué haría mejor?**
+# Dedicaría más tiempo a la validación cruzada del modelo y exploraría modelos más complejos como Prophet o redes neuronales LSTM. 
+# También incluiría datos externos (clima, campañas, eventos) para enriquecer el contexto de la predicción.
+# 
+# **¿Qué descubrió de sí mismo?**
+# Descubrí que tengo una gran curiosidad por entender el “por qué” detrás de los números. 
+# Disfruté tanto la parte técnica como la interpretación de resultados.
